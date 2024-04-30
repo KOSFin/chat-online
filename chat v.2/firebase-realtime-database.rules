@@ -1,0 +1,13 @@
+// Это правила безопасности для Firebase Realtime Database (где у нас хранятся сообщения чата).
+
+{
+  "rules": {
+    "messages": {
+      "$messageId": {
+        ".read": true, // Разрешено читать всем
+        ".write": "auth != null && data.child('uid').val() == auth.uid" // Разрешено записывать только в сообщения, где uid соответствует UID пользователя
+      },
+    	".read": true,
+    }
+  }
+}
